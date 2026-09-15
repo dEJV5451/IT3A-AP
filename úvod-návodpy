@@ -1,0 +1,36 @@
+class Zvire: #vyrábíme šablonu/popis toho co je to
+    def __init__(self, jmeno:str, vek:int, misto:str = "bouda"): #init = konstruktor, umožňuje na základě popisu vyrobit konkrétní objekt,    cokoliv:datový_typ = "výchozí hodnota"
+        self.jmeno = jmeno #self = říká, že se to týká konkrétního prvku
+        self.vek = vek
+        self.misto = misto
+        pass #aby kód nepsal chyby, když není dokončen
+    def zvuk(self):  #potřebuji sám se sebou pracovat (self), #definuji proměnné, nějaké akce 
+        return "???" #návrat hodnoty
+
+    def predstavSe(self):
+        return f"Jmenuji se {self.jmeno}, je mi {self.vek} let."
+
+    def kdeJsi(self):
+        return f"Jsem v místě zvaném {self.misto}"
+
+    def jdiNa(self, nMisto:str):
+        self.misto = nMisto #self.místo důležité přepsat na novou hodnotu
+        return f"Přesunul jsem se na {nMisto}. {self.kdeJsi()}"
+
+
+zvire = Zvire("Luděk", 22) #vyrobení konkrétního objektu (instance objektu)
+print(zvire.jmeno)
+print(zvire.vek) #přístup k vlastnosti
+print(zvire.zvuk())
+print(zvire.predstavSe())
+print(zvire.kdeJsi())
+print(zvire.jdiNa("Škola"))
+
+zvire2 = Zvire("Amálka", 5, "na zahradě")
+print(zvire2.jmeno)
+print(zvire2.vek)
+print(zvire2.misto)
+print(zvire2.zvuk())
+print(zvire2.predstavSe())
+print(zvire2.kdeJsi())
+print(zvire2.jdiNa("oběd"))
