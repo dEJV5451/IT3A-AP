@@ -37,6 +37,58 @@ class Pes(Zvire):
         
     def predstavSe(self):
         return f"{super().predstavSe()} jsem {self.plemeno}" #print se nedoporučuje, jinak bychom toto nemohli udělat
+    
+class Papousek(Zvire):
+    def __init__(self, jmeno, barva_peri, vek, misto = "klec"):
+        super().__init__(jmeno, vek, misto)
+        self.barva_peri = barva_peri
+        pass
+
+    def zvuk(self):
+        return "Krák krák!"
+    
+    def opakuj(self, slovo:str):
+        return f"{self.jmeno} opakuje {slovo}!, {slovo}!"
+    
+class Had(Zvire):
+    def __init__(self, jmeno, vek, delka_v_cm:int, jedovaty:bool, misto = "klec"):
+        super().__init__(jmeno, vek, misto)
+        self.delka_v_cm = delka_v_cm
+        self.jedovaty = jedovaty
+        pass
+
+    def zvuk(self):
+        return "Ssssss!"
+    
+    def ustknuti(self, jedovaty):
+        if self.jedovaty:
+            return f"Pozor! {self.jmeno} tě uštknul a je jedovatý"
+        else:
+            return f"Pozor! {self.jmeno} to kousnul, ale naštěstí není jedovatý"
+        
+    def predstavSe(self):
+        if self.jedovaty:
+            typ = "jedovatý"
+        else:
+            typ = "škrtič"
+        
+        return f"Ssssss ... já jsem {self.jmeno}, měřím {self.delka_v_cm} a jsem {typ}"
+        
+had = Had("Robertek", 3, 69, True, "Terárium")
+print(had.jmeno)
+print(had.delka_v_cm)
+print(had.vek)
+print(had.predstavSe())
+print(had.ustknuti(jedovaty=True))
+
+print("-" * 20)
+    
+papousek = Papousek("Huberto", "Fialová", 3, "Parapet")
+print(papousek.jmeno)
+print(papousek.barva_peri)
+print(papousek.opakuj("Ne"))
+
+print("-" * 20)
 
 zvire3 = Pes("Tonda", 4, "Buldok", "Doma")
 print(zvire3.jmeno)
@@ -58,6 +110,8 @@ print(zvire.predstavSe())
 print(zvire.kdeJsi())
 print(zvire.jdiNa("Škola"))
 
+print("-" * 20)
+
 zvire2 = Zvire("Amálka", 5, "na zahradě")
 print(zvire2.jmeno)
 print(zvire2.vek)
@@ -66,3 +120,10 @@ print(zvire2.zvuk())
 print(zvire2.predstavSe())
 print(zvire2.kdeJsi())
 print(zvire2.jdiNa("oběd"))
+
+print("-" * 20)
+
+zoo = [papousek, had, zvire2, zvire]
+for obyvatel in zoo: #projde všechny prvky v poli
+    print(obyvatel.zvuk()) #postupně je projde, a u každého v listu vyvolá funkce predstavSe a zvuk
+    print(obyvatel.predstavSe()) #Polymorfismus = volá stejnou metodu, ale pokaždé se chová jinak kvůli tomu, že stejná metoda je rozdílně udělaná u každého zvířete
