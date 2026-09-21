@@ -1,10 +1,11 @@
-class Zvire: #vyrábíme šablonu/popis toho co je to
-    def __init__(self, jmeno:str, vek:int, misto:str = "bouda"): #init = konstruktor, umožňuje na základě popisu vyrobit konkrétní objekt,    cokoliv:datový_typ = "výchozí hodnota"
-        self.jmeno = jmeno #self = říká, že se to týká konkrétního prvku
+import random
+class Zvire:
+    def __init__(self, jmeno:str, vek:int, misto:str = "bouda"):
+        self.jmeno = jmeno
         self.vek = vek
         self.misto = misto
-        pass #aby kód nepsal chyby, když není dokončen
-    def zvuk(self):  #potřebuji sám se sebou pracovat (self), #definuji proměnné, nějaké akce 
+        pass
+    def zvuk(self):  #potřebuji sám se sebou pracovat (self)
         return "???" #návrat hodnoty
 
     def predstavSe(self):
@@ -17,8 +18,39 @@ class Zvire: #vyrábíme šablonu/popis toho co je to
         self.misto = nMisto #self.místo důležité přepsat na novou hodnotu
         return f"Přesunul jsem se na {nMisto}. {self.kdeJsi()}"
 
+class Pes(Zvire):
+    def __init__(self, jmeno, vek, plemeno, misto = "bouda"):
+        super().__init__(jmeno, vek, misto) #super = podívej se do rodiče, odkazuje na rodiče
+        self.plemeno = plemeno
 
-zvire = Zvire("Luděk", 22) #vyrobení konkrétního objektu (instance objektu)
+    def zvuk(self):
+        return "Haf, Haf!"
+    
+    def aport(self):
+        return f"{self.jmeno} přinesl míček"
+    
+    def vycesat(self):
+        if(random.randint(0,1) > 0):
+            return f"{self.jmeno} utekl před tvým kartáček"
+        else:
+            return f"{self.jmeno} se nechal vyčesat"
+        
+    def predstavSe(self):
+        return f"{super().predstavSe()} jsem {self.plemeno}" #print se nedoporučuje, jinak bychom toto nemohli udělat
+
+zvire3 = Pes("Tonda", 4, "Buldok", "Doma")
+print(zvire3.jmeno)
+print(zvire3.plemeno)
+print(zvire3.zvuk())
+print(zvire3.predstavSe())
+print(zvire3.aport())
+print(zvire3.vycesat())
+print(zvire3.kdeJsi())
+print(zvire3.predstavSe())
+
+print("-" * 20)
+
+zvire = Zvire("Luděk", 22)
 print(zvire.jmeno)
 print(zvire.vek) #přístup k vlastnosti
 print(zvire.zvuk())
