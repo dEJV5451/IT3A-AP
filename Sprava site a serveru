@@ -1,0 +1,26 @@
+class SitoveZarizeni:
+    def __init__(self, nazev:str, ip_adresa:str, online:bool = False):
+        self.nazev = nazev
+        self.ip_adresa = ip_adresa
+        self.online = online
+        pass
+
+#Funkce, přepne hodnotu online (z True na False a naopak) a vrátí textový report o novém stavu
+    
+def diagnostika(self):
+    return f"Spouštím diagnostiku: {self.nazev}, {self.ip_adresa}, {self.online}"
+
+class Router(SitoveZarizeni):
+    def __init__(self, pocet_zarizeni:int, nazev:str, ip_adresa:str, online:bool = False):
+        super().__init__(nazev, ip_adresa, online)
+        self.pocet_zarizeni = pocet_zarizeni
+        pass
+
+#Funkce, za pomocí super(), která zavolá původní diagnostiku, a přidá k ní "Kontroluji LAN porty"
+
+def restartuj_wifi(self):
+    return f"Restartuji Wi-Fi..."
+
+class Server(SitoveZarizeni):
+    def __init__(self, operacni_system:str = "Ubuntu" ,nazev:str, ip_adresa:str, online:bool = False):
+        super().__init__(nazev, ip_adresa, online)
