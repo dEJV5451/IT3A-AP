@@ -1,0 +1,65 @@
+class Vozidla:
+    def __init__(self, znacka:str, rok_vyroby:int, stav_nadrze:int = "100"):
+        self.znacka = znacka
+        self.rok_vyroby = rok_vyroby
+        self.stav_nadrze = stav_nadrze
+        pass
+
+def zvuk_motoru(self):
+    return f"???"
+
+def info(self):
+    return f"{self.znacka} {self.rok_vyroby}"
+
+def startuj(self):
+    if self.stav_nadrze > 0:
+        return f"{self.zvuk_motoru} nastartováno!"
+    else:
+        return f"Nedostatek paliva!"
+
+class Auto(Vozidla):
+    def __init__(self, znacka:str, rok_vyroby:int, stav_nadrze:int, typ_prevodovky:str):
+        super().__init__(znacka, rok_vyroby, stav_nadrze)
+        self.typ_prevodovky = typ_prevodovky
+        pass
+
+def zvuk_motoru(self):
+    return f"Vrum Vrum!"
+
+def zatrub(self):
+    return "Tuuuut!"
+
+class Moped(Vozidla):
+    def __init__(self, znacka:str, rok_vyroby:int, stav_nadrze:int, ma_slapadla:bool):
+        super().__init__(znacka, rok_vyroby, stav_nadrze)
+        self.ma_slapadla = ma_slapadla
+        pass
+
+def zvuk_motoru(self):
+    return f"Trrrrr!"
+
+def slapej(self):
+    if self.ma_slapadla == "Ano":
+        return f"Šlapu!"
+    else:
+        return f"Nemám šlapadla, ale ty máš voči, tak se podívej more!"
+    
+Moped1 = Moped("Jantar", 1997, 100, "Ano")
+
+print(Moped1.znacka)
+print(Moped1.rok_vyroby)
+print(Moped1.stav_nadrze)
+print(Moped1.ma_slapadla)
+
+Auto1 = Auto("Trabant", 1991, 100, "Makova")
+
+print(Auto1.znacka)
+print(Auto1.rok_vyroby)
+print(Auto1.stav_nadrze)
+print(Auto1.typ_prevodovky)
+
+
+garaz = [Auto1, Moped1]
+
+for vozidla in garaz:
+    print(vozidla.startuj())
